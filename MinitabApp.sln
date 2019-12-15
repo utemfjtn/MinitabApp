@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinitabApp", "MinitabApp\MinitabApp.csproj", "{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x86.ActiveCfg = Debug|x86
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x86.Build.0 = Debug|x86
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x86.ActiveCfg = Release|x86
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FEF79B1-C49A-4C11-B3AF-5916B5EC4C28}
+	EndGlobalSection
+EndGlobal
