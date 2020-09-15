@@ -18,9 +18,33 @@ namespace MinitabApp {
         public ClsMtbHelper(bool visible = false) {
             mtbApp = new Application();
             mtbApp.UserInterface.Visible = visible;
+            EnableProjects();
+        }
+        ~ClsMtbHelper() {
+            Quit();
+        }
+        private void EnableProjects() {
             mtbProject = mtbApp.ActiveProject;
             mtbWorkSheet = mtbProject.ActiveWorksheet;
             mtbColumns = mtbWorkSheet.Columns;
+        }
+        public string OpenProject(string filepath) {
+            try {
+                mtbApp.Open(filepath);
+                EnableProjects();
+                return string.Empty;
+            } catch (System.Exception ex) {
+                return ex.ToString();
+            }
+        }
+        public void Quit() {
+            try {
+                mtbApp.Quit();
+            } catch (System.Exception ) {
+            }
+            finally {
+                mtbApp = null;
+            }
         }
         public string CreateColumn(string columnName, double[] data) {
             try {
