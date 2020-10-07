@@ -17,8 +17,8 @@ namespace MinitabApp {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             //SampleRun();
             clsMtbHelper = new ClsMtbHelper(true);
-            clsMtbHelper.CreateColumn("Test", new double[] { 22, 123, 45, 76 });
-            clsMtbHelper.ExecCapabilityAnalysis("Test", 2, 5);
+            //clsMtbHelper.CreateColumn("Test", new double[] { 22, 123, 45, 76 });
+            //clsMtbHelper.ExecCapabilityAnalysis("Test", 2, 5);
         }
         private void SampleRun() {
             Mtb.Application application = new Mtb.Application();
@@ -38,6 +38,11 @@ namespace MinitabApp {
             project.ExecuteCommand("Capa 'Sales' 1;Lspec 2;Uspec 5;Pooled;AMR;UnBiased;OBiased;Toler 6;Within;Overall;NoCI;PPM;CStat.");
 
             command = project.Commands.Item(1);            
-        }        
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            //clsMtbHelper.OpenProject(TBExcelFilePath.Text);
+            clsMtbHelper.OpenProject(@"D:\Repos\MinitabApp\MinitabApp\Resources\Test.xlsx");
+        }
     }
 }

@@ -8,6 +8,9 @@
         Title="MainWindow" Height="450" Width="800" 
         Loaded="Window_Loaded">
     <Grid>
-        
+        <TextBox x:Name="TBExcelFilePath" HorizontalAlignment="Left" Height="25" Margin="173,178,0,0" TextWrapping="Wrap" Text="..\\Resources\Test.xlsx" VerticalAlignment="Top" Width="397"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="173,152,0,0" VerticalAlignment="Top"/>
+        <Button Content="Open Excel" Click="Button_Click" HorizontalAlignment="Left" Height="38" Margin="213,222,0,0" VerticalAlignment="Top" Width="76"/>
+
     </Grid>
 </Window>

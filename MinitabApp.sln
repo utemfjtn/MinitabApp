@@ -5,22 +5,36 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinitabApp", "MinitabApp\MinitabApp.csproj", "{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinitabMenu", "MinitabMenu\MinitabMenu.csproj", "{C93839B4-E638-486D-9C5A-26B3E095829F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x64.ActiveCfg = Debug|x64
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x64.Build.0 = Debug|x64
 		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x86.ActiveCfg = Debug|x86
 		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Debug|x86.Build.0 = Debug|x86
-		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|Any CPU.ActiveCfg = Release|x86
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x64.ActiveCfg = Release|x64
+		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x64.Build.0 = Release|x64
 		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x86.ActiveCfg = Release|x86
 		{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}.Release|x86.Build.0 = Release|x86
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Debug|x64.ActiveCfg = Debug|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Debug|x64.Build.0 = Debug|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Debug|x86.ActiveCfg = Debug|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Release|Any CPU.ActiveCfg = Release|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Release|x64.ActiveCfg = Release|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Release|x64.Build.0 = Release|x64
+		{C93839B4-E638-486D-9C5A-26B3E095829F}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
