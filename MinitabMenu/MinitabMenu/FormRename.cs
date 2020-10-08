@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace MinitabMenu
+namespace YAN_MinitabMenu
 {
     internal partial class FormRename : Form
     {

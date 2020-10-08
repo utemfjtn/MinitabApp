@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MinitabMenu {
+namespace YAN_MinitabMenu {
     public partial class FormAbout : Form {
         internal FormAbout() {
             InitializeComponent();

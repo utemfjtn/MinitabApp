@@ -11,13 +11,12 @@ using Mtb;
 using RGiesecke.DllExport;
 using Application = Mtb.Application;
 
-namespace MinitabMenu
-{
+namespace YAN_MinitabMenu {
     [ComVisible(true)]
     //计算机\HKEY_USERS\S-1-5-21-45146399-3246480850-3154560146-1001\SOFTWARE\Minitab\Minitab19.1SimplifiedChinese\Addins\{ED8C3AEB-6980-7927-38C0-5C01AEA512F6}
-    [Guid("ED8C3AEB-6980-7927-38C0-5C01AEA512F6")]//make sure each new menu dll has unique GUID!it will show in the upper register.    
+    [Guid("DDBB881E-1C5F-DF0F-BEEC-0E707A4C241F")]//make sure each new menu dll has unique GUID!it will show in the upper register.    
     [ClassInterface(ClassInterfaceType.None)]
-    [ProgId("MinitabMenu.AddIn")]//提供表示 Windows 注册表中的根项的 Microsoft.Win32.RegistryKey 对象，并提供访问项/值对的 static 方法。Should be same as your project name.
+    [ProgId("YAN_MinitabMenu.AddIn")]//提供表示 Windows 注册表中的根项的 Microsoft.Win32.RegistryKey 对象，并提供访问项/值对的 static 方法。Should be same as your project name.
     public class AddIn : IMinitabAddin
     {
         internal static Application gMtbApp;
@@ -66,7 +65,7 @@ namespace MinitabMenu
             server.SetValue("RuntimeVersion", runtimeVersion);
             server.SetValue("CodeBase", codeBase);
 
-            RegistryKey serverVersion = server.CreateSubKey("1.0.0.0");
+            RegistryKey serverVersion = server.CreateSubKey("1.0.0.3");
             serverVersion.SetValue("Class", type.FullName);
             serverVersion.SetValue("Assembly", type.Assembly.FullName);
             serverVersion.SetValue("RuntimeVersion", runtimeVersion);
@@ -83,6 +82,7 @@ namespace MinitabMenu
             // You can hold onto either of these for use in your add-in.
             // “iFlags” is used to tell Minitab if your add-in has dynamic menus (i.e. should be reloaded each time
             // Minitab starts up).  Set Flags to 1 for dynamic menus and 0 for static.
+            //MessageBox.Show("start OnConnect!");
             gMtbApp = pApp as Application;
             iFlags = Flags;
             return;
@@ -115,7 +115,7 @@ namespace MinitabMenu
         public string GetDescription()
         {
             // This method returns the description of your add-in:
-            return "An example Minitab add-in written in C♯ using the “Minitab Menu” functionality.";
+            return "An example Minitab add-in written in C♯ using the “Minitab Menu” functionality. Updated by YAN";
         }
 
         public void GetMenuItems(ref string sMainMenu, ref Array saMenuItems, ref int iFlags)

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <OutputType>Library</OutputType>
     <LangVersion>8.0</LangVersion>
-    <AssemblyName>MinitabMenu</AssemblyName>
+    <AssemblyName>YAN_MinitabMenu</AssemblyName>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <WarningLevel>4</WarningLevel>
@@ -29,16 +29,20 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup>
-    <Win32Resource>D:\Repos\MinitabApp\MinitabMenu\Resources\MinitabMenu.res</Win32Resource>
+    <Win32Resource>D:\Repos\MinitabApp\MinitabMenu\Resources\YAN_MinitabMenu.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <RegisterForComInterop>true</RegisterForComInterop>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>MinitabMenu</RootNamespace>
+    <RootNamespace>YAN_MinitabMenu</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Data" />
@@ -136,10 +140,15 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RegAsm.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y $(TargetPath)  "D:/Minitab/Minitab 19/中文(简体)/AddIns/"</PostBuildEvent>
+    <PostBuildEvent>copy /Y $(TargetPath)  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"
+copy /Y $(TargetDir)\RegAsm.bat  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"
+copy /Y $(TargetDir)\RGiesecke.DllExport.Metadata.dll  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"</PostBuildEvent>
   </PropertyGroup>
 </Project>

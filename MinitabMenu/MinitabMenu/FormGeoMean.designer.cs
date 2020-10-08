@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace MinitabMenu
+namespace YAN_MinitabMenu
 {
     partial class FormGeoMean
     {

@@ -12,3 +12,5 @@ This Software created by VS2019, .NET 4.8.
 
 ## TODO
 * Add Output Graph and Output Data.
+
+

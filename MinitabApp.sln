@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinitabApp", "MinitabApp\MinitabApp.csproj", "{D835C3CA-AF75-4EC0-BB82-48E7A8BA73BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinitabMenu", "MinitabMenu\MinitabMenu.csproj", "{C93839B4-E638-486D-9C5A-26B3E095829F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAN_MinitabMenu", "MinitabMenu\YAN_MinitabMenu.csproj", "{C93839B4-E638-486D-9C5A-26B3E095829F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOnly", "TestOnly\TestOnly.csproj", "{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C5548DC-4232-45C6-BB85-DA80B5CBA692}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +50,8 @@ Global
 		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Debug|x86.Build.0 = Debug|Any CPU
 		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x64.ActiveCfg = Release|Any CPU
-		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x64.Build.0 = Release|Any CPU
+		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x64.ActiveCfg = Release|x64
+		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x64.Build.0 = Release|x64
 		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C2EA3473-7EB7-4F29-B395-05DDEC360D9C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection

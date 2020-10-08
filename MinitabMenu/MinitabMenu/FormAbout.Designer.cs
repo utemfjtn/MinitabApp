@@ -1,4 +1,4 @@
-﻿namespace MinitabMenu {
+﻿namespace YAN_MinitabMenu {
     partial class FormAbout {
         /// <summary>
         /// Required designer variable.
