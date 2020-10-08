@@ -14,12 +14,14 @@ using Application = Mtb.Application;
 namespace MinitabMenu
 {
     [ComVisible(true)]
-    [Guid("ED8C3AEB-6980-7927-38C0-5C01AEA512F6")]
+    //计算机\HKEY_USERS\S-1-5-21-45146399-3246480850-3154560146-1001\SOFTWARE\Minitab\Minitab19.1SimplifiedChinese\Addins\{ED8C3AEB-6980-7927-38C0-5C01AEA512F6}
+    [Guid("ED8C3AEB-6980-7927-38C0-5C01AEA512F6")]//make sure each new menu dll has unique GUID!it will show in the upper register.    
     [ClassInterface(ClassInterfaceType.None)]
-    [ProgId("MinitabMenu.AddIn")]
+    [ProgId("MinitabMenu.AddIn")]//提供表示 Windows 注册表中的根项的 Microsoft.Win32.RegistryKey 对象，并提供访问项/值对的 static 方法。Should be same as your project name.
     public class AddIn : IMinitabAddin
     {
         internal static Application gMtbApp;
+        internal static int Flags = 1; //Set Flags to 1 for dynamic menus and 0 for static. 1 mainly used for debug. 0 for release.
 
         [DllExport("DllRegisterServer", CallingConvention.StdCall)]
         public static int DllRegisterServer()
@@ -37,7 +39,10 @@ namespace MinitabMenu
 
             return 0;
         }
-
+        /// <summary>
+        /// No need to change. used for register.
+        /// </summary>
+        /// <param name="root"></param>
         private static void SetUpCLSID(RegistryKey root)
         {
             Type type = typeof(AddIn);
@@ -79,8 +84,7 @@ namespace MinitabMenu
             // “iFlags” is used to tell Minitab if your add-in has dynamic menus (i.e. should be reloaded each time
             // Minitab starts up).  Set Flags to 1 for dynamic menus and 0 for static.
             gMtbApp = pApp as Application;
-            // Static menus:
-            iFlags = 0;
+            iFlags = Flags;
             return;
         }
 
@@ -105,23 +109,24 @@ namespace MinitabMenu
         {
             // This method returns the friendly name of your add-in:
             // Both the name and the description of the add-in are stored in the registry.
-            return "Example C♯ Minitab Add-In";
+            return "Example C♯ Minitab Add-In!";
         }
 
         public string GetDescription()
         {
             // This method returns the description of your add-in:
-            return "An example Minitab add-in written in C♯ using the “My Menu” functionality.";
+            return "An example Minitab add-in written in C♯ using the “Minitab Menu” functionality.";
         }
 
         public void GetMenuItems(ref string sMainMenu, ref Array saMenuItems, ref int iFlags)
         {
             // This method returns the text for the main menu and each menu item.
             // You can return "|" to create a menu separator in your menu items.
-            sMainMenu = "&Release (R)";  // This string is the name of the menu.
+            sMainMenu = "&Six Sigma (S)";  // This string is the name of the menu.
 
-            saMenuItems = new string[7];  // The strings in this array are the names of the items on the aforementioned menu.
-
+            int totalSubMenuItems = 8;
+            saMenuItems = new string[totalSubMenuItems];  // The strings in this array are the names of the items on the aforementioned menu.
+            
             saMenuItems.SetValue("Describe &column(s)…", 0);
             saMenuItems.SetValue("Rename active &worksheet…", 1);
             saMenuItems.SetValue("|", 2);
@@ -129,6 +134,7 @@ namespace MinitabMenu
             saMenuItems.SetValue("&Geometric Mean and Mean Absolute Difference…", 4);
             saMenuItems.SetValue("|", 5);
             saMenuItems.SetValue("&NotePad+", 6);
+            saMenuItems.SetValue("&About", 7);
 
             // Flags is not currently used:
             iFlags = 0;
@@ -205,18 +211,23 @@ namespace MinitabMenu
                     break;
                 case 1:
                     // Rename active worksheet:
-                    FormRename formRename = new FormRename(ref gMtbApp);
-                    string sCurrent = gMtbApp.ActiveProject.ActiveWorksheet.Name;
-                    formRename.textBoxCurrent.Enabled = true;
-                    formRename.textBoxCurrent.Text = sCurrent;
-                    formRename.textBoxCurrent.Enabled = false;
-                    // Show the dialog:
-                    dialogResult = formRename.ShowDialog();
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        gMtbApp.ActiveProject.ActiveWorksheet.Name = formRename.textBoxNew.Text;
+                    try {
+                        MessageBox.Show("Rename start!");
+                        FormRename formRename = new FormRename(ref gMtbApp);
+                        string sCurrent = gMtbApp.ActiveProject.ActiveWorksheet.Name;
+                        formRename.textBoxCurrent.Enabled = true;
+                        formRename.textBoxCurrent.Text = sCurrent;
+                        formRename.textBoxCurrent.Enabled = false;
+                        // Show the dialog:
+                        dialogResult = formRename.ShowDialog();
+                        if(dialogResult == DialogResult.OK) {
+                            gMtbApp.ActiveProject.ActiveWorksheet.Name = formRename.textBoxNew.Text;
+                        }
+                        formRename.Close();
+                        MessageBox.Show("Rename end!");
+                    } catch(Exception ex) {
+                        MessageBox.Show(ex.ToString());
                     }
-                    formRename.Close();
                     break;
                 case 2:
                     break;
@@ -319,12 +330,18 @@ namespace MinitabMenu
                         }
                     }
                     break;
+                case 7:
+                    FormAbout formAbout = new FormAbout(ref gMtbApp);
+                    // Show the dialog:
+                    formAbout.ShowDialog();
+                    break;
                 default:
                     break;
             }
             return command;
         }
 
+        #region notused
         public void OnNotify(AddinNotifyType eAddinNotifyType)
         {
             // This method is called when Minitab notifies your add-in that something has changed.
@@ -332,6 +349,7 @@ namespace MinitabMenu
             // Minitab currently fires no events, so this method is not called.
             return;
         }
+        #endregion
 
         public bool QueryCustomCommand(string sCommand)
         {

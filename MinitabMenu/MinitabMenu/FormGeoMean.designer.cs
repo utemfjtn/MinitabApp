@@ -44,7 +44,7 @@ namespace MinitabMenu
             this.lblColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColumns.Location = new System.Drawing.Point(12, 27);
             this.lblColumns.Name = "lblColumns";
-            this.lblColumns.Size = new System.Drawing.Size(102, 13);
+            this.lblColumns.Size = new System.Drawing.Size(128, 17);
             this.lblColumns.TabIndex = 0;
             this.lblColumns.Text = "Select a column:";
             // 
@@ -53,7 +53,7 @@ namespace MinitabMenu
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Location = new System.Drawing.Point(120, 27);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(152, 21);
+            this.comboBox.Size = new System.Drawing.Size(152, 23);
             this.comboBox.TabIndex = 1;
             // 
             // buttonOK
@@ -80,7 +80,7 @@ namespace MinitabMenu
             // 
             this.AcceptButton = this.buttonOK;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(284, 141);
+            this.ClientSize = new System.Drawing.Size(294, 151);
             this.ControlBox = false;
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);

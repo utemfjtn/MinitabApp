@@ -46,7 +46,7 @@ namespace MinitabMenu
             this.labelCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrent.Location = new System.Drawing.Point(13, 22);
             this.labelCurrent.Name = "labelCurrent";
-            this.labelCurrent.Size = new System.Drawing.Size(82, 13);
+            this.labelCurrent.Size = new System.Drawing.Size(106, 17);
             this.labelCurrent.TabIndex = 0;
             this.labelCurrent.Text = "Current name";
             // 
@@ -56,7 +56,7 @@ namespace MinitabMenu
             this.labelNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNew.Location = new System.Drawing.Point(12, 94);
             this.labelNew.Name = "labelNew";
-            this.labelNew.Size = new System.Drawing.Size(66, 13);
+            this.labelNew.Size = new System.Drawing.Size(82, 17);
             this.labelNew.TabIndex = 1;
             this.labelNew.Text = "New name";
             // 
@@ -64,14 +64,14 @@ namespace MinitabMenu
             // 
             this.textBoxCurrent.Location = new System.Drawing.Point(16, 52);
             this.textBoxCurrent.Name = "textBoxCurrent";
-            this.textBoxCurrent.Size = new System.Drawing.Size(256, 20);
+            this.textBoxCurrent.Size = new System.Drawing.Size(256, 25);
             this.textBoxCurrent.TabIndex = 2;
             // 
             // textBoxNew
             // 
             this.textBoxNew.Location = new System.Drawing.Point(15, 131);
             this.textBoxNew.Name = "textBoxNew";
-            this.textBoxNew.Size = new System.Drawing.Size(256, 20);
+            this.textBoxNew.Size = new System.Drawing.Size(256, 25);
             this.textBoxNew.TabIndex = 3;
             // 
             // buttonCancel
@@ -98,7 +98,7 @@ namespace MinitabMenu
             // 
             this.AcceptButton = this.buttonOK;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(276, 254);
             this.ControlBox = false;
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
