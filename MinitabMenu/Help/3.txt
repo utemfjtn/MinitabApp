@@ -1,0 +1,3 @@
+copy /Y $(TargetPath)  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"
+copy /Y $(TargetDir)\RegAsm.bat  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"
+copy /Y $(TargetDir)\RGiesecke.DllExport.Metadata.dll  "C:/Program Files/Minitab/Minitab 19/中文(简体)/AddIns/"

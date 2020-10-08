@@ -20,7 +20,7 @@ namespace YAN_MinitabMenu {
     public class AddIn : IMinitabAddin
     {
         internal static Application gMtbApp;
-        internal static int Flags = 1; //Set Flags to 1 for dynamic menus and 0 for static. 1 mainly used for debug. 0 for release.
+        internal static int Flags = 0; //Set Flags to 1 for dynamic menus and 0 for static. 1 mainly used for debug. 0 for release.
 
         [DllExport("DllRegisterServer", CallingConvention.StdCall)]
         public static int DllRegisterServer()
@@ -134,7 +134,7 @@ namespace YAN_MinitabMenu {
             saMenuItems.SetValue("&Geometric Mean and Mean Absolute Difference…", 4);
             saMenuItems.SetValue("|", 5);
             saMenuItems.SetValue("&NotePad+", 6);
-            saMenuItems.SetValue("&About", 7);
+            saMenuItems.SetValue("&About Minitab", 7);
 
             // Flags is not currently used:
             iFlags = 0;
