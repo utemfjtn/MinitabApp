@@ -74,18 +74,6 @@
     <Compile Include="MinitabMenu\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="MinitabMenu\FormDescribe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MinitabMenu\FormDescribe.designer.cs">
-      <DependentUpon>FormDescribe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MinitabMenu\FormGeoMean.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MinitabMenu\FormGeoMean.designer.cs">
-      <DependentUpon>FormGeoMean.cs</DependentUpon>
-    </Compile>
     <Compile Include="MinitabMenu\FormRename.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,12 +90,6 @@
   <ItemGroup>
     <EmbeddedResource Include="MinitabMenu\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MinitabMenu\FormDescribe.resx">
-      <DependentUpon>FormDescribe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MinitabMenu\FormGeoMean.resx">
-      <DependentUpon>FormGeoMean.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MinitabMenu\FormRename.resx">
       <DependentUpon>FormRename.cs</DependentUpon>

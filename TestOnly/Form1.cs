@@ -15,7 +15,6 @@ namespace TestOnly {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            MinitabMenu.AddIn.DllRegisterServer();
             //MinitabMenu.ClsRegisterDLL.RegisterDll(@"D:\Minitab\Minitab 19\中文(简体)\AddIns\MinitabMenu.dll");
             gMtbApp = new Mtb.Application();
             foreach(string item in Enum.GetNames(typeof(Mtb.MtbOutputFileTypes))) {

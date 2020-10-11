@@ -340,7 +340,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About";
+            this.Text = "About            Addin Powered by YAN.Qian 2020-10-09";
             this.Load += new System.EventHandler(this.FormAbout_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAbout_KeyDown);
             this.groupBox1.ResumeLayout(false);
