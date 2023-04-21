@@ -11,6 +11,7 @@ namespace MinitabApp {
         private Project mtbProject;
         private Worksheet mtbWorkSheet;
         private Columns mtbColumns;
+        public bool ProjectOpened = false;
 
         /// <summary>
         /// Used for Single Project,WorkSheet.
@@ -33,6 +34,7 @@ namespace MinitabApp {
             try {
                 mtbApp.Open(filepath);
                 EnableProjects();
+                ProjectOpened = true;
                 return "Load Succes：" + filepath;
             } catch (System.Exception ex) {
                 return ex.ToString();
@@ -46,6 +48,7 @@ namespace MinitabApp {
             } catch (System.Exception) {
             } finally {
                 mtbApp = null;
+                ProjectOpened = false;
             }
         }
         public string CreateColumn(string columnName, double[] data) {

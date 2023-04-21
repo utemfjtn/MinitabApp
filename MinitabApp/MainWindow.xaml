@@ -17,9 +17,10 @@
             <WrapPanel>
                 <Label Content="Project File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding ExcelFilePath}" VerticalAlignment="Top" Width="450"/>
+                <Button Content="Open Project" Click="Button_OpenProject_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
             </WrapPanel>
             <WrapPanel>
-                <Label Content="Export File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Export Folder" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding ExportFilePath}" VerticalAlignment="Top" Width="450"/>
             </WrapPanel>
             <WrapPanel>
@@ -28,7 +29,7 @@
                 <Label Content="USL/Tolerance Fixed at Column C2.Sequnce execute" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </WrapPanel>
             <WrapPanel>
-                <CheckBox Content="enable Cgk" IsChecked="{Binding Cgkenable}" VerticalContentAlignment="Center"/>
+                <CheckBox Content="Enable Cgk" IsChecked="{Binding Cgkenable}" VerticalContentAlignment="Center"/>
                 <Label Content="Data Start Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding CpkCgk_DataStart}" VerticalAlignment="Top" Width="50"/>
                 <Label Content="Data End Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -49,7 +50,6 @@
                 <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding GRR_DataEnd}" VerticalAlignment="Top" Width="50"/>
                 <Button Content="Start GRR Automatic" Click="Button_StartGRR_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
             </WrapPanel>
-            <Button Content="Start Sample of Cpk/Cgk/GRR" Click="Button_OpenExcel_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
         </WrapPanel>
         <StatusBar Grid.Row="2">
             <TextBlock Text="{Binding Logs}"/>

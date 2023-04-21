@@ -35,7 +35,7 @@ namespace MinitabApp {
 
         private void Button_StartCpkCgk_Click(object sender, RoutedEventArgs e) {
             binding.Logs = "";
-            binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
+            if (!clsMtbHelper.ProjectOpened) Button_OpenProject_Click(null, null);
             for (int i = (int)binding.CpkCgk_DataStart; i < binding.CpkCgk_DataEnd + 1; i++) {
                 double lsl = clsMtbHelper.GetData(1, i - 2); //Must get from column 1;
                 double usl = clsMtbHelper.GetData(2, i - 2);//Must get from column 2;
@@ -45,26 +45,28 @@ namespace MinitabApp {
                     binding.Logs += clsMtbHelper.ExecCapabilityAnalysis("C" + i, lsl, usl);
                 }
             }
-            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
-            binding.Logs += "Finished";
+            if (System.IO.Directory.Exists(binding.ExportFilePath)) {
+                System.IO.Directory.CreateDirectory(binding.ExportFilePath);
+            }
+            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Now.ToFileTime());
+            binding.Logs += "StartCpkCgk Finished";
         }
         private void Button_StartGRR_Click(object sender, RoutedEventArgs e) {
             binding.Logs = "";
-            binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
+            if (!clsMtbHelper.ProjectOpened) Button_OpenProject_Click(null, null);
             for (int i = (int)binding.GRR_DataStart; i < binding.GRR_DataEnd + 1; i++) {
                 binding.Logs += clsMtbHelper.ExecGRRAnalysis("C" + binding.GRR_SN, "C" + binding.GRR_OP, "C" + i);
             }
-            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
-            binding.Logs += "Finished";
+            if (System.IO.Directory.Exists(binding.ExportFilePath)) {
+                System.IO.Directory.CreateDirectory(binding.ExportFilePath);
+            }
+            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Now.ToFileTime());
+            binding.Logs += "StartGRR Finished";
         }
-        private void Button_OpenExcel_Click(object sender, RoutedEventArgs e) {
+        private void Button_OpenProject_Click(object sender, RoutedEventArgs e) {
             binding.Logs = "";
             binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
-            binding.Logs += clsMtbHelper.ExecCapabilityAnalysis("EC7_1", 350, 450);
-            binding.Logs += clsMtbHelper.ExecCgkAnalysis("EC7_1", 420, 50);
-            binding.Logs += clsMtbHelper.ExecGRRAnalysis("SN_1", "Operator", "EC7_1");
-            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
-            binding.Logs += "Finished";
+            binding.Logs += "OpenProject Finished";
         }
     }
 }
