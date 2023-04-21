@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MinitabApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" 
+        Title="Minitab Tools for automation generate report. Created at 2023-04-21,V1.00" Height="450" Width="800" 
         Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
@@ -21,8 +21,35 @@
             <WrapPanel>
                 <Label Content="Export File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding ExportFilePath}" VerticalAlignment="Top" Width="450"/>
-            </WrapPanel>    
-            <Button Content="Start" Click="Button_OpenExcel_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="76"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Start Cpk/Cgk." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="LSL/Reference Fixed at Column C1.Sequnce execute" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="USL/Tolerance Fixed at Column C2.Sequnce execute" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </WrapPanel>
+            <WrapPanel>
+                <CheckBox Content="enable Cgk" IsChecked="{Binding Cgkenable}" VerticalContentAlignment="Center"/>
+                <Label Content="Data Start Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding CpkCgk_DataStart}" VerticalAlignment="Top" Width="50"/>
+                <Label Content="Data End Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding CpkCgk_DataEnd}" VerticalAlignment="Top" Width="50"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Content="Start Cpk/Cgk Automatic" Click="Button_StartCpkCgk_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Start GRR." HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Operator Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding GRR_OP}" VerticalAlignment="Top" Width="50"/>
+                <Label Content="SN Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding GRR_SN}" VerticalAlignment="Top" Width="50"/>
+                <Label Content="Data Start Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding GRR_DataStart}" VerticalAlignment="Top" Width="50"/>
+                <Label Content="Data End Column No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding GRR_DataEnd}" VerticalAlignment="Top" Width="50"/>
+                <Button Content="Start GRR Automatic" Click="Button_StartGRR_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
+            </WrapPanel>
+            <Button Content="Start Sample of Cpk/Cgk/GRR" Click="Button_OpenExcel_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top"/>
         </WrapPanel>
         <StatusBar Grid.Row="2">
             <TextBlock Text="{Binding Logs}"/>

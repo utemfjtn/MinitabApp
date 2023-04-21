@@ -59,6 +59,15 @@ namespace MinitabApp {
                 return ex.ToString();
             }
         }
+        public double GetData(int columnNo, int rowNo) {
+            try {
+                Column column = mtbColumns.Item(columnNo);
+                double data = column.GetData(rowNo, 1);
+                return data;
+            } catch (System.Exception ex) {
+                return 0;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

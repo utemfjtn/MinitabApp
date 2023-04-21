@@ -21,30 +21,42 @@ namespace MinitabApp {
             clsMtbHelper = new ClsMtbHelper(true);
             binding = new ClsUIBinding();
             binding.Logs = "Start Program";
-            binding.ExcelFilePath = @"D:\Repos\MinitabApp\MinitabApp\Resources\Test.mpx";
+            binding.ExcelFilePath = @"D:\Repos\MinitabApp\MinitabApp\Resources\Cpk_CgkTemplate.mpx";
             binding.ExportFilePath = @"D:\Repos\MinitabApp\MinitabApp\bin\x86\Debug\Report\";
+            binding.GRR_SN = 1;
+            binding.GRR_OP = 2;
+            binding.GRR_DataStart = 3;
+            binding.GRR_DataEnd = 5;
+            binding.Cgkenable = true;
+            binding.CpkCgk_DataStart = 3;
+            binding.CpkCgk_DataEnd = 5;
             DataContext = binding;
         }
-        //private void SampleRun() {
-        //    Mtb.Application application = new Mtb.Application();
-        //    Mtb.Project project = application.ActiveProject;
-        //    Mtb.Worksheet worksheet = project.ActiveWorksheet;
-        //    Mtb.Columns columns = worksheet.Columns;
-        //    Mtb.Column column;
-        //    Mtb.Command command;
 
-        //    double[] arraryData = new double[] { 25, 12, 53, 25 };
-
-        //    application.UserInterface.Visible = true;
-        //    columns.Add(null, null, 2).Name = "Sales";
-        //    column = columns.Item(1);
-        //    column.SetData(arraryData);
-
-        //    project.ExecuteCommand("Capa 'Sales' 1;Lspec 2;Uspec 5;Pooled;AMR;UnBiased;OBiased;Toler 6;Within;Overall;NoCI;PPM;CStat.");
-
-        //    command = project.Commands.Item(1);            
-        //}
-
+        private void Button_StartCpkCgk_Click(object sender, RoutedEventArgs e) {
+            binding.Logs = "";
+            binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
+            for (int i = (int)binding.CpkCgk_DataStart; i < binding.CpkCgk_DataEnd + 1; i++) {
+                double lsl = clsMtbHelper.GetData(1, i - 2); //Must get from column 1;
+                double usl = clsMtbHelper.GetData(2, i - 2);//Must get from column 2;
+                if (binding.Cgkenable) {
+                    binding.Logs += clsMtbHelper.ExecCgkAnalysis("C" + i, lsl, usl);
+                } else {
+                    binding.Logs += clsMtbHelper.ExecCapabilityAnalysis("C" + i, lsl, usl);
+                }
+            }
+            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
+            binding.Logs += "Finished";
+        }
+        private void Button_StartGRR_Click(object sender, RoutedEventArgs e) {
+            binding.Logs = "";
+            binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
+            for (int i = (int)binding.GRR_DataStart; i < binding.GRR_DataEnd + 1; i++) {
+                binding.Logs += clsMtbHelper.ExecGRRAnalysis("C" + binding.GRR_SN, "C" + binding.GRR_OP, "C" + i);
+            }
+            binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
+            binding.Logs += "Finished";
+        }
         private void Button_OpenExcel_Click(object sender, RoutedEventArgs e) {
             binding.Logs = "";
             binding.Logs = clsMtbHelper.OpenProject(binding.ExcelFilePath);
@@ -52,6 +64,7 @@ namespace MinitabApp {
             binding.Logs += clsMtbHelper.ExecCgkAnalysis("EC7_1", 420, 50);
             binding.Logs += clsMtbHelper.ExecGRRAnalysis("SN_1", "Operator", "EC7_1");
             binding.Logs += clsMtbHelper.Generate_OutputReport(binding.ExportFilePath + DateTime.Today.ToFileTime());
+            binding.Logs += "Finished";
         }
     }
 }
