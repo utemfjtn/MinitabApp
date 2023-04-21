@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace YAN_MinitabMenu {
@@ -20,7 +14,7 @@ namespace YAN_MinitabMenu {
 
         private void FormAbout_Load(object sender, EventArgs e) {
             try {
-                foreach(string item in Enum.GetNames(typeof(Mtb.MtbOutputFileTypes))) {
+                foreach (string item in Enum.GetNames(typeof(Mtb.MtbOutputFileTypes))) {
                     cB_DefaultOutputFileType.Items.Add(item);
                 }
                 tB_AddInPath.Text = AddIn.gMtbApp.AddInPath;
@@ -37,7 +31,7 @@ namespace YAN_MinitabMenu {
                 tB_ClientMissingValueNumeric.Text = AddIn.gMtbApp.Options.ClientMissingValueNumeric.ToString();
                 tB_DefaultFilePath.Text = AddIn.gMtbApp.Options.DefaultFilePath;
                 cB_DefaultOutputFileType.SelectedItem = AddIn.gMtbApp.Options.DefaultOutputFileType.ToString();
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -51,8 +45,8 @@ namespace YAN_MinitabMenu {
                 AddIn.gMtbApp.Options.ClientMissingValueDateTime = Convert.ToDateTime(tB_ClientMissingValueDateTime.Text);
                 AddIn.gMtbApp.Options.ClientMissingValueNumeric = Convert.ToDouble(tB_ClientMissingValueNumeric.Text);
                 AddIn.gMtbApp.Options.DefaultFilePath = tB_DefaultFilePath.Text;
-                AddIn.gMtbApp.Options.DefaultOutputFileType = (Mtb.MtbOutputFileTypes)Enum.Parse(typeof(Mtb.MtbOutputFileTypes), cB_DefaultOutputFileType.SelectedItem.ToString());                
-            } catch(Exception ex) {
+                AddIn.gMtbApp.Options.DefaultOutputFileType = (Mtb.MtbOutputFileTypes)Enum.Parse(typeof(Mtb.MtbOutputFileTypes), cB_DefaultOutputFileType.SelectedItem.ToString());
+            } catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -62,9 +56,9 @@ namespace YAN_MinitabMenu {
         }
 
         private void FormAbout_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Escape) {
-                bt_Cancel_Click(null,null);
-            } else if(e.KeyCode == Keys.Enter) {
+            if (e.KeyCode == Keys.Escape) {
+                bt_Cancel_Click(null, null);
+            } else if (e.KeyCode == Keys.Enter) {
                 bt_OK_Click(null, null);
             }
         }

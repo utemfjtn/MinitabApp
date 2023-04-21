@@ -8,9 +8,24 @@
         Title="MainWindow" Height="450" Width="800" 
         Loaded="Window_Loaded">
     <Grid>
-        <TextBox x:Name="TBExcelFilePath" HorizontalAlignment="Left" Height="25" Margin="173,178,0,0" TextWrapping="Wrap" Text="..\\Resources\Test.xlsx" VerticalAlignment="Top" Width="397"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="173,152,0,0" VerticalAlignment="Top"/>
-        <Button Content="Open Excel" Click="Button_Click" HorizontalAlignment="Left" Height="38" Margin="213,222,0,0" VerticalAlignment="Top" Width="76"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" MaxHeight="80"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="1" Orientation="Vertical">
+            <WrapPanel>
+                <Label Content="Project File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding ExcelFilePath}" VerticalAlignment="Top" Width="450"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Export File" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="{Binding ExportFilePath}" VerticalAlignment="Top" Width="450"/>
+            </WrapPanel>    
+            <Button Content="Start" Click="Button_OpenExcel_Click" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="76"/>
+        </WrapPanel>
+        <StatusBar Grid.Row="2">
+            <TextBlock Text="{Binding Logs}"/>
+        </StatusBar>
     </Grid>
 </Window>

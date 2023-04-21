@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using MinitabAddinTLB;
+using RGiesecke.DllExport;
+using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using MinitabAddinTLB;
-using Mtb;
-using RGiesecke.DllExport;
 using Application = Mtb.Application;
 
 namespace YAN_MinitabMenu {
@@ -17,22 +15,17 @@ namespace YAN_MinitabMenu {
     [Guid("DDBB881E-1C5F-DF0F-BEEC-0E707A4C241F")]//make sure each new menu dll has unique GUID!it will show in the upper register.    
     [ClassInterface(ClassInterfaceType.None)]
     [ProgId("YAN_MinitabMenu.AddIn")]//提供表示 Windows 注册表中的根项的 Microsoft.Win32.RegistryKey 对象，并提供访问项/值对的 static 方法。Should be same as your project name.
-    public class AddIn : IMinitabAddin
-    {
+    public class AddIn : IMinitabAddin {
         #region system
         internal static Application gMtbApp;
         internal static int Flags = 0; //Set Flags to 1 for dynamic menus and 0 for static. 1 mainly used for debug. 0 for release.
 
         [DllExport("DllRegisterServer", CallingConvention.StdCall)]
-        public static int DllRegisterServer()
-        {
-            try
-            {
+        public static int DllRegisterServer() {
+            try {
                 SetUpCLSID(Registry.ClassesRoot);
                 SetUpCLSID(Registry.LocalMachine.OpenSubKey("SOFTWARE", true).OpenSubKey("Classes", true));
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
                 // Probably didn't have permissions to modify the registry
             }
@@ -43,8 +36,7 @@ namespace YAN_MinitabMenu {
         /// No need to change. used for register.
         /// </summary>
         /// <param name="root"></param>
-        private static void SetUpCLSID(RegistryKey root)
-        {
+        private static void SetUpCLSID(RegistryKey root) {
             Type type = typeof(AddIn);
             string guid = type.GUID.ToString("B");
             string runtimeVersion = Environment.Version.ToString();
@@ -75,8 +67,7 @@ namespace YAN_MinitabMenu {
             clsidGuid.CreateSubKey("ProdId").SetValue("", type.FullName);
         }
 
-        public void OnConnect(IntPtr iHwnd, object pApp, ref int iFlags)
-        {
+        public void OnConnect(IntPtr iHwnd, object pApp, ref int iFlags) {
             // This method is called as Minitab is initializing your add-in.
             // The “iHwnd” parameter is the handle to the main Minitab window.
             // The “pApp” parameter is a reference to the “Minitab Automation object.”
@@ -89,32 +80,28 @@ namespace YAN_MinitabMenu {
             return;
         }
 
-        public void OnDisconnect()
-        {
+        public void OnDisconnect() {
             // This method is called as Minitab is closing your add-in.
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            try
-            {
+            try {
                 Marshal.ReleaseComObject(gMtbApp);
                 gMtbApp = null;
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
             return;
         }
 
-        public string GetName()
-        {
+        public string GetName() {
             // This method returns the friendly name of your add-in:
             // Both the name and the description of the add-in are stored in the registry.
             return "Example C♯ Minitab Add-In!";
         }
 
-        public string GetDescription()
-        {
+        public string GetDescription() {
             // This method returns the description of your add-in:
             return "An example Minitab add-in written in C♯ using the “Minitab Menu” functionality. Updated by YAN";
         }
@@ -127,14 +114,13 @@ namespace YAN_MinitabMenu {
         private const string Menuitems_splitter2_Description = "|"; private const int Menuitems_splitter2_id = 4;
         private const string Menuitems_about_Description = "&About Minitab"; private const int Menuitems_about_id = 5;
         private int totalSubMenuItems = 6;
-        public void GetMenuItems(ref string sMainMenu, ref Array saMenuItems, ref int iFlags)
-        {
+        public void GetMenuItems(ref string sMainMenu, ref Array saMenuItems, ref int iFlags) {
             // This method returns the text for the main menu and each menu item.
             // You can return "|" to create a menu separator in your menu items.
             sMainMenu = "&Six Sigma (S)";  // This string is the name of the menu.
 
             saMenuItems = new string[totalSubMenuItems];  // The strings in this array are the names of the items on the aforementioned menu.
-            
+
             saMenuItems.SetValue(Menuitems_cgk_Description, Menuitems_cgk_id);
             saMenuItems.SetValue(Menuitems_grr_Description, Menuitems_grr_id);
             saMenuItems.SetValue(Menuitems_splitter1_Description, Menuitems_splitter1_id);
@@ -147,23 +133,21 @@ namespace YAN_MinitabMenu {
             return;
         }
 
-        public string OnDispatchCommand(int iMenu)
-        {
+        public string OnDispatchCommand(int iMenu) {
             // This method is called whenever a user selects one of your menu items.
             // The iMenu variable should be equivalent to the menu item index set in “GetMenuItems.”
             string command = string.Empty;
             DialogResult dialogResult;
-            switch (iMenu)
-            {
-                case Menuitems_cgk_id: 
+            switch (iMenu) {
+                case Menuitems_cgk_id:
                     break;
-                case Menuitems_grr_id:                    
+                case Menuitems_grr_id:
                     break;
                 case Menuitems_splitter1_id:
                     break;
-                case Menuitems_cpk_id:                   
+                case Menuitems_cpk_id:
                     break;
-                case Menuitems_splitter2_id:                   
+                case Menuitems_splitter2_id:
                     break;
                 case Menuitems_about_id:
                     FormAbout formAbout = new FormAbout(ref gMtbApp);
@@ -177,8 +161,7 @@ namespace YAN_MinitabMenu {
         }
         #endregion
         #region notused
-        public void OnNotify(AddinNotifyType eAddinNotifyType)
-        {
+        public void OnNotify(AddinNotifyType eAddinNotifyType) {
             // This method is called when Minitab notifies your add-in that something has changed.
             // Use the “eAddinNotifyType” parameter to figure out what changed.
             // Minitab currently fires no events, so this method is not called.
@@ -186,19 +169,16 @@ namespace YAN_MinitabMenu {
         }
         #endregion
         #region CustomCommand
-        public bool QueryCustomCommand(string sCommand)
-        {
+        public bool QueryCustomCommand(string sCommand) {
             // This method is called when Minitab asks your Addin if it supports a custom command.
             // The argument “sCommand” is the name of the custom command.  Return “true” if you support the command.
             return sCommand.ToUpper() == "EXPLORER" || sCommand.ToUpper() == "CLEAR";
         }
 
-        public void ExecuteCustomCommand(string sCommand, ref Array saArgs)
-        {
+        public void ExecuteCustomCommand(string sCommand, ref Array saArgs) {
             // This method is called when Minitab asks your add-in to execute a custom command.
             // The argument “sCommand” is the name of the command, and “saArgs” is an array of arguments.
-            if (sCommand.ToUpper() == "EXPLORER")
-            {
+            if (sCommand.ToUpper() == "EXPLORER") {
                 // Open Windows Explorer:
                 Process process = new Process();
                 ProcessStartInfo processStartInfo = new ProcessStartInfo {
@@ -206,29 +186,21 @@ namespace YAN_MinitabMenu {
                     FileName = "explorer.exe"
                 };
                 process.StartInfo = processStartInfo;
-                try
-                {
+                try {
                     process.Start();
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     MessageBox.Show(e.Message, "My Menu");
                     MessageBox.Show("Apparently, Windows Explorer could not be started…", "My Menu");
                 }
-            }
-            else if (sCommand.ToUpper() == "CLEAR")
-            {
+            } else if (sCommand.ToUpper() == "CLEAR") {
                 // Clear indicated columns:
                 int lColumnCount = gMtbApp.ActiveProject.ActiveWorksheet.Columns.Count;
                 //int saArgsCardinality = saArgs.GetLength(saArgs.Rank - 1);
                 IEnumerator myEnumerator = saArgs.GetEnumerator();
-                while (myEnumerator.MoveNext())
-                {
-                    for (int i = 1; i <= lColumnCount; i++)
-                    {
+                while (myEnumerator.MoveNext()) {
+                    for (int i = 1; i <= lColumnCount; i++) {
                         int.TryParse(myEnumerator.Current.ToString(), out int myEnumeratorCurrent);
-                        if (gMtbApp.ActiveProject.ActiveWorksheet.Columns.Item(i).Number == myEnumeratorCurrent)
-                        {
+                        if (gMtbApp.ActiveProject.ActiveWorksheet.Columns.Item(i).Number == myEnumeratorCurrent) {
                             gMtbApp.ActiveProject.ActiveWorksheet.Columns.Item(i).Clear();
                         }
                     }
